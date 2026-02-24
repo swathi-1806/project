@@ -2,8 +2,8 @@
 
 `include "memory1.v"
 `define PRINT 1
-module top;
 
+module top;
 parameter DEPTH=16;
 parameter WIDTH=16;
 parameter ADDR_WIDTH= $clog2(DEPTH);
@@ -14,8 +14,9 @@ reg [ADDR_WIDTH-1:0]addr;
 reg [WIDTH-1:0]wdata;
 wire [WIDTH-1:0]rdata;
 wire ready;
+	
 integer i;
-reg[25*8:0]testname;
+	reg[25*8:0]testname;     //for string
 
 memory1 #(.DEPTH(DEPTH),.WIDTH(WIDTH)) dut(
                                          .clk   (clk),
@@ -26,12 +27,13 @@ memory1 #(.DEPTH(DEPTH),.WIDTH(WIDTH)) dut(
                                          .rdata (rdata),
                                          .valid (valid),
                                          .ready (ready));
+	
 //clock generation
  initial begin
    clk =0;
    forever #5 clk=~clk;
    end
-//finishing the simmulation
+//---------------------	
    initial begin
    		reset_mem();
 		$value$plusargs("testcase=%s",testname);
@@ -181,3 +183,4 @@ task mem_bd_read();
 	end
 endtask
 endmodule
+
