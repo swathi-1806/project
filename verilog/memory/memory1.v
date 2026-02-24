@@ -1,6 +1,8 @@
-//implementation of memoru design
 
+
+//implementation of memoru design
 module memory1(clk,rst,wr_rd,addr,wdata,rdata,valid,ready);
+	
 //declaration of parameters
 parameter DEPTH=16;
 parameter WIDTH=08;
@@ -20,7 +22,6 @@ reg [WIDTH-1:0] mem[DEPTH-1:0];
 integer i;
 
 //memory fumctionality
-
 always@(posedge clk)begin
       if (rst==1)begin
 	  	rdata=0;
@@ -43,5 +44,6 @@ always@(posedge clk)begin
        end
 end
 endmodule
+
 
 
