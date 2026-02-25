@@ -104,13 +104,15 @@ vcs memory1.v top.v
 ./simv +testcase=test_5wr_5rd
 
 ### Project Structure
+```
 memory_project/
 │
-├── memory1.v        # RTL Design<br>
-├── memory1_tb.v     # Testbench<br>
-├── data.hex         # Backdoor write input file<br>
-├── output.bin       # Backdoor read output file<br>
+├── memory1.v        # RTL Design
+├── top.v            # Testbench
+├── data.hex         # Backdoor write input file
+├── output.bin       # Backdoor read output file
 └── README.md
+```
 
 ### Verification Methodology
 
