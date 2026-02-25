@@ -169,6 +169,7 @@ memory1 #(.DEPTH(DEPTH),.WIDTH(WIDTH)) dut(
 			addr =0;
 		end
 	endtask
+	
 //memory_backdoor_acces
 task mem_bd_write();
 	begin
@@ -183,4 +184,5 @@ task mem_bd_read();
 	end
 endtask
 endmodule
+
 
