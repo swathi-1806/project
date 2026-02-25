@@ -5,31 +5,32 @@ This project implements a parameterized single-port synchronous memory in Verilo
 
 ## The design supports:
 
-Controlled read/write operations
-Reset-based memory initialization
-Directed test cases
-Frontdoor and Backdoor memory access
-A self-checking style testbench with multiple test scenarios is included.
+Controlled read/write operations<br>
+Reset-based memory initialization<br>
+Directed test cases<br>
+Frontdoor and Backdoor memory access<br>
+A self-checking style testbench with multiple test scenarios is included.<br>
 
 ## Design Specifications
 ### Parameters
-Parameter	Description	Default Value
-DEPTH	Number of memory locations	16
-WIDTH	Data width	8
-ADDR_WIDTH	Calculated using $clog2(DEPTH)	Auto
+Parameter	Description	Default Value<br>
+DEPTH	Number of memory locations	16<br>
+WIDTH	Data width	8<br>
+ADDR_WIDTH	Calculated using $clog2(DEPTH)	Auto<br>
+
 ### Port Description
 #### Inputs
- clk → Clock signal
- rst → Active high reset
- wr_rd → Write/Read control
-       1 → Write
-       0 → Read
-valid → Request signal
-addr → Address input
-wdata → Write data
+ clk → Clock signal<br>
+ rst → Active high reset<br>
+ wr_rd → Write/Read control<br>
+       1 → Write<br>
+       0 → Read<br>
+valid → Request signal<br>
+addr → Address input<br>
+wdata → Write data<br>
 #### Outputs
-rdata → Read data
-ready → Response signal
+rdata → Read data<br>
+ready → Response signal<br>
 
 ### Design Functionality
 #### Reset Condition
@@ -39,43 +40,43 @@ ready = 0
 Entire memory array is cleared to zero
 
 #### Normal Operation (On posedge clk)
-If valid = 1:
-ready = 1
-If wr_rd = 1 → Write operation
-mem[addr] = wdata
-If wr_rd = 0 → Read operation
-rdata = mem[addr]
-If valid = 0:
-ready = 0
+If valid = 1:<br>
+ready = 1<br>
+If wr_rd = 1 → Write operation<br>
+mem[addr] = wdata<br>
+If wr_rd = 0 → Read operation<br>
+rdata = mem[addr]<br>
+If valid = 0:<br>
+ready = 0<br>
 
 #### Valid-Ready Handshake Protocol
 The design follows a simple handshake mechanism:
 
-valid	  ready	  Operation
-1	        1	      Transaction accepted
-1	        0      	Wait
-0	        0	      Idle
+ valid   ready    Operation
+  1         1	      Transaction accepted
+  1	        0      	Wait
+  0	        0	      Idle
 
 This ensures controlled data transfer between master and memory.
 
 ## Testbench Description
 ### The testbench includes:
-Clock generation
-Reset task
-Write task
-Read task
-Multiple directed testcases
-Backdoor memory access
-Plusargs-based testcase selection
+Clock generation<br>
+Reset task<br>
+Write task<br>
+Read task<br>
+Multiple directed testcases<br>
+Backdoor memory access<br>
+Plusargs-based testcase selection<br>
 
 ### Testbench Features
 #### Frontdoor Access
-Write using valid + wr_rd
-Read using valid
+Write using valid + wr_rd<br>
+Read using valid<br>
 
 #### Backdoor Access
-$readmemh() → Load memory from file (data.hex)
-$writememb() → Dump memory into file (output.bin)
+$readmemh() → Load memory from file (data.hex)<br>
+$writememb() → Dump memory into file (output.bin)<br>
 
 ### Available Testcases
 
@@ -114,12 +115,12 @@ memory_project/
 ### Verification Methodology
 
 ### The project verifies:
-Basic write functionality
-Basic read functionality
-Partial memory access
-Full memory access
-Boundary conditions
-Backdoor memory operations
+Basic write functionality<br>
+Basic read functionality<br>
+Partial memory access<br>
+Full memory access<br>
+Boundary conditions<br>
+Backdoor memory operations<br>
 
 ### Tools Used
 Verilog HDL
