@@ -1,50 +1,40 @@
-Memory Design with Valid-Ready Protocol (Verilog)
-📌 Project Overview
+# Memory Design with Valid-Ready Protocol (Verilog)
+Project Overview
 
 This project implements a parameterized single-port synchronous memory in Verilog with a valid-ready handshake protocol.
 
-The design supports:
+## The design supports:
 
-Controlled read/write operations
+### Controlled read/write operations
 
-Reset-based memory initialization
+### Reset-based memory initialization
 
-Directed test cases
+### Directed test cases
 
-Frontdoor and Backdoor memory access
+### Frontdoor and Backdoor memory access
 
-A self-checking style testbench with multiple test scenarios is included.
+### A self-checking style testbench with multiple test scenarios is included.
 
-🏗️ Design Specifications
-🔹 Parameters
+## Design Specifications
+### Parameters
 Parameter	Description	Default Value
 DEPTH	Number of memory locations	16
 WIDTH	Data width	8
 ADDR_WIDTH	Calculated using $clog2(DEPTH)	Auto
-🔌 Port Description
-Inputs
+### Port Description
+#### Inputs
+##### clk → Clock signal
+##### rst → Active high reset
+##### wr_rd → Write/Read control
+###### 1 → Write
+###### 0 → Read
+##### valid → Request signal
+##### addr → Address input
+##### wdata → Write data
 
-clk → Clock signal
-
-rst → Active high reset
-
-wr_rd → Write/Read control
-
-1 → Write
-
-0 → Read
-
-valid → Request signal
-
-addr → Address input
-
-wdata → Write data
-
-Outputs
-
-rdata → Read data
-
-ready → Response signal
+#### Outputs
+##### rdata → Read data
+##### ready → Response signal
 
 ⚙️ Design Functionality
 🔹 Reset Condition
