@@ -81,16 +81,16 @@ $writememb() → Dump memory into file (output.bin)
 
 The testbench supports multiple scenarios using:
 +testcase=<test_name>
-Example Testcases:
-Testcase	Description
-test_1wr_1rd	1 write, 1 read
-test_5wr_5rd	5 writes, 5 reads
-test_wr_rd	Full memory write and read
-test_half_portion	Half memory access
-test_bd_wr_bd_rd	Backdoor write & read
-test_fd_wr_fd_rd	Frontdoor write & read
-test_3/4_portion	75% memory access
-test_1/4_portion	25% memory access
+Example Testcases:<br>
+Testcase	Description,<br>
+test_1wr_1rd	1 write, 1 read<br>
+test_5wr_5rd	5 writes, 5 reads<br>
+test_wr_rd	Full memory write and read<br>
+test_half_portion	Half memory access<br>
+test_bd_wr_bd_rd	Backdoor write & read<br>
+test_fd_wr_fd_rd	Frontdoor write & read<br>
+test_3/4_portion	75% memory access<br>
+test_1/4_portion	25% memory access<br>
 
 ## How to Run Simulation
 Using ModelSim / QuestaSim
@@ -105,10 +105,10 @@ vcs memory1.v top.v
 ### Project Structure
 memory_project/
 │
-├── memory1.v        # RTL Design
-├── memory1_tb.v          # Testbench
-├── data.hex         # Backdoor write input file
-├── output.bin       # Backdoor read output file
+├── memory1.v        # RTL Design<br>
+├── memory1_tb.v     # Testbench<br>
+├── data.hex         # Backdoor write input file<br>
+├── output.bin       # Backdoor read output file<br>
 └── README.md
 
 ### Verification Methodology
