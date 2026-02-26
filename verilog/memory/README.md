@@ -104,10 +104,11 @@ Using ModelSim / QuestaSim
 vlog memory1.v top.v
 vsim top +testcase=test_5wr_5rd
 run -all
-```
+
 Using VCS
 vcs memory1.v top.v
 ./simv +testcase=test_5wr_5rd
+
 ```
 ---
 ### Project Structure
