@@ -53,14 +53,14 @@ wr_ptr == rd_ptr AND toggle match → EMPTY
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 sync_fifo_project/
 │
-├── sync_fifo.v      # FIFO RTL Design
-├── tb_fifo.v        # Testbench
-└── README.md        # Documentation
+├── fifo1.v         # FIFO RTL Design
+├── fifo1_tb.v      # Testbench
+└── README.md       # Documentation
 ```
 
 ---
@@ -134,14 +134,12 @@ run -all
 ---
 
 ## Future Improvements
-
 * SystemVerilog Assertions (SVA)
 * Functional Coverage
 * UVM Testbench Integration
 * Scoreboard Implementation
 * Asynchronous FIFO Version
 
----
 
 
 
