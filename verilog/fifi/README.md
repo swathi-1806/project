@@ -19,7 +19,7 @@ The design is verified using multiple directed testcases controlled via **plusar
 
 ---
 
-## 🏗️ Design Specifications
+## Design Specifications
 
 | Parameter  | Description                     | Default |
 | ---------- | ------------------------------- | ------- |
