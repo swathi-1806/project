@@ -1,4 +1,4 @@
-#  Synchronous FIFO Design and Verification (Verilog)
+#  Synchronous FIFO Design and Verification using Verilog
 
 ##  Project Overview
 This project implements a **parameterized Synchronous FIFO (First-In First-Out)** memory using Verilog HDL along with a self-checking testbench.
