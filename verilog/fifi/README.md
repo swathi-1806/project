@@ -5,6 +5,7 @@ This project implements a **parameterized Synchronous FIFO (First-In First-Out)*
 The FIFO supports configurable **data width** and **depth**, and includes status flags such as **full, empty, overflow, and underflow**.
 The design is verified using multiple directed testcases controlled via **plusargs**.
 
+---
 ## 🎯 Features
 * Parameterized FIFO Depth and Data Width
 * Synchronous Read and Write Operations
@@ -74,16 +75,14 @@ The testbench includes reusable tasks:
 * `print_function()` → Display FIFO status
 
 Testcases are selected using command-line arguments.
-
 Example:
-
 ```
 +testcase=test_5wr_5rd
 ```
 
 ---
 
-## ✅ Supported Testcases
+## Supported Testcases
 
 | Testcase                | Description             |
 | ----------------------- | ----------------------- |
@@ -100,24 +99,20 @@ Example:
 
 ---
 
-## ▶️ Simulation Instructions
-
+## Simulation Instructions
 ### Compile
-
 ```
 vlog sync_fifo.v tb_fifo.v
 ```
 
 ### Run Simulation
-
 ```
 vsim top +testcase=test_5wr_5rd
 run -all
 ```
 
 ---
-
-## 📊 Expected Behavior
+## Expected Behavior
 
 * Writes stop when FIFO becomes full
 * Reads stop when FIFO becomes empty
@@ -126,7 +121,7 @@ run -all
 
 ---
 
-## 🚀 Key Learning Outcomes
+## Key Learning Outcomes
 
 * FIFO Design Fundamentals
 * Pointer Management Techniques
@@ -138,7 +133,7 @@ run -all
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 * SystemVerilog Assertions (SVA)
 * Functional Coverage
@@ -148,16 +143,5 @@ run -all
 
 ---
 
-## 👩‍💻 Author
 
-**Swathi Bawge**
-VLSI | Digital Design | Verification Enthusiast
-
----
-
-## ⭐ If you found this useful
-
-Please consider giving this repository a ⭐ on GitHub!
-
----
 
