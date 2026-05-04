@@ -1,5 +1,5 @@
 # waveform
-
+## one_wr_one_rd
 <img width="1304" height="454" alt="Screenshot 2026-05-04 202457" src="https://github.com/user-attachments/assets/099d6e4b-4366-47ff-a9b3-f98e4fa9d5d8" />
 
 
