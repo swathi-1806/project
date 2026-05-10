@@ -24,8 +24,9 @@ virtual function void write(mem_tx t);
 		`uvm_info("SBD",
         		   $sformatf("WRITE stored: ADDR=%0h DATA=%0h",
                    tx.addr, tx.wdata),
-        UVM_LOW)
+       			 UVM_LOW)
 	end
+
 	//read operation
 	else begin
 	//if adreess exist means write happened before
@@ -40,10 +41,9 @@ virtual function void write(mem_tx t);
 
 			else begin
 				miss_match_count++;
-		 		`uvm_info("SBD",
+		 		`uvm_error("SBD",
             			  $sformatf("MISMATCH: ADDR=%0h EXP=%0h ACT=%0h",
-                      tx.addr, sbd_mem[tx.addr], tx.rdata),
-							UVM_LOW)		
+                      tx.addr, sbd_mem[tx.addr], tx.rdata))		
 			end
 		end
 		//address does not exists means read before write
@@ -64,4 +64,6 @@ endfunction
   endfunction
 
 endclass
+
+
 
