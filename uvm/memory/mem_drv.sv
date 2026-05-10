@@ -21,6 +21,7 @@ task run_phase(uvm_phase phase);
 		seq_item_port.get_next_item(req);
 		//drive the item to dut using interface
 		drive_tx(req);//user defined task
+       req.print();
 		//send the ack to sqr
 		seq_item_port.item_done();
 	end
