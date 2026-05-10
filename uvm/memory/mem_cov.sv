@@ -18,7 +18,13 @@ covergroup mem_cg;
 	ADDR_CP: coverpoint tx.addr;
 	WR_RD_X_ADDR:cross WR_RD_CP,ADDR_CP;
 endgroup
-
+/*
+function void build_phase(uvm_phase phase);
+	super.build_phase(phase);
+	//allocate memory for covergroup
+	mem_cg  = new();//we should not allocate like this
+endfunction
+*/
 function new(string name="", uvm_component parent);
     super.new(name, parent);
   	mem_cg = new();   //ONLY PLACE allowed for memory of covergroup
@@ -31,8 +37,4 @@ endfunction
 
 
 endclass
-
-
-
-
 
