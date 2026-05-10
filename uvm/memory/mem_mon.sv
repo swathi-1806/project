@@ -31,6 +31,7 @@ tx = mem_tx::type_id::create("tx");
 			tx.addr =  vif.mon_cb.addr;
 			if(tx.wr_rd == 1) tx.wdata = vif.mon_cb.wdata;
 			if(tx.wr_rd == 0) tx.rdata = vif.mon_cb.rdata;
+         
 			//print
 			`uvm_info("mem_mon",
 				$sformatf("CMD = %s||ADDR=%h||DATA=%h",
@@ -47,6 +48,5 @@ endtask
 
 endclass
 
-
  
-
+	
