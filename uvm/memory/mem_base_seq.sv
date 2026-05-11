@@ -44,6 +44,38 @@ endtask
 
 endclass
 
+class mem_5_wr_3_rd_seq extends mem_base_seq;
+	`uvm_object_utils(mem_5_wr_3_rd_seq);
+
+mem_tx tx_t;
+`NEW_OBJ
+
+task pre_body();
+	`uvm_info("seq","pre_body",UVM_NONE)
+endtask
+
+task body();
+	mem_tx req_wr;
+	mem_tx req_rd;
+	 bit [`ADDR_WIDTH-1:0] saved_addr;
+	repeat(5)begin
+	`uvm_do_with(req_wr, {req_wr.wr_rd == 1;})
+	 saved_addr = req_wr.addr;
+	end
+	repeat(3)begin
+	`uvm_do_with(req_rd ,{req_rd.wr_rd == 0;
+						  req_rd.addr== saved_addr;})
+	end
+
+endtask
+
+task post_body();
+	`uvm_info("seq","post_body",UVM_NONE)
+endtask
+
+endclass
+
+
 
 //generate tx with addr for compleate DEPTH location of memory
 //addr to be generated should be unique and random
