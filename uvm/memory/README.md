@@ -56,4 +56,5 @@ rdata = 111
 Exactly what was written earlier.
 
 ## mem_full_wr_full_rd
-![Uploading Screenshot 2026-05-10 211107.png…]()
+<img width="1816" height="257" alt="Screenshot 2026-05-10 211107" src="https://github.com/user-attachments/assets/e4576fa7-860c-4a9c-8cc3-c5187fbf7969" />
+
