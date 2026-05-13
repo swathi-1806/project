@@ -80,11 +80,13 @@ Sequence:
 This verifies mailbox reuse across multiple sequence calls.
 <img width="1836" height="251" alt="image" src="https://github.com/user-attachments/assets/9b954dec-31d5-49d3-9b72-c447b835d767" />
 
-* wr-->addr=hf || wdata = 'hec826818
-* rd-->addr=hf || rdata = 'hec826818
-* wr-->addr=h2 || wdata = 'hd6dadd1c 
-* rd-->addr=h2 || rdata = 'hd6dadd1c  
- 
+|wr_rd | addr |  data    |
+|------|------|----------|
+|1(wr) |  hf  |'hec826818| 
+|0(rd) |  hf  |'hec826818|
+|1(wr) |  h2  |'hd6dadd1c|
+|0(rd) |  h2  |'hd6dadd1c|
+
 
 ### MEM_PARALLEL_WR_RD
 * Write and Read sequences run in parallel using fork...join
