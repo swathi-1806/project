@@ -58,20 +58,20 @@ This ensures correct data comparison and functional verification
 ### write
 |wr_rd | addr | wdata    |
 |------|------|----------|
-|1     |  hf  |'hec826818|  
-|1     |  h2  |'hd6dadd1c|
-|1     |  hd  |'hb4db4bfa|
-|1     |  h5  |'h2a517247|
-|1     |  h6  |'h259ef30e|
+|1     | `hf  |'hec826818|  
+|1     | `h2  |'hd6dadd1c|
+|1     | `hd  |'hb4db4bfa|
+|1     | `h5  |'h2a517247|
+|1     | `h6  |'h259ef30e|
 
 ### read
-|wr_rd | addr | rdata    |
-|------|------|----------|
-|0     |  hf  |'hec826818|  
-|0     |  h2  |'hd6dadd1c|
-|0     |  hd  |'hb4db4bfa|
-|0     |  h5  |'h2a517247|
-|0     |  h6  |'h259ef30e|
+|wr_rd | addr `| rdata    |
+|------|-------|----------|
+|0     |  `hf  |'hec826818|  
+|0     |  `h2  |'hd6dadd1c|
+|0     |  `hd  |'hb4db4bfa|
+|0     |  `h5  |'h2a517247|
+|0     |  `h6  |'h259ef30e|
 
 ### MEM_1WR_1RD_1WR_1RD
 
@@ -80,12 +80,12 @@ Sequence:
 This verifies mailbox reuse across multiple sequence calls.
 <img width="1836" height="251" alt="image" src="https://github.com/user-attachments/assets/9b954dec-31d5-49d3-9b72-c447b835d767" />
 
-|wr_rd | addr |  data    |
-|------|------|----------|
-|1(wr) |  hf  |'hec826818| 
-|0(rd) |  hf  |'hec826818|
-|1(wr) |  h2  |'hd6dadd1c|
-|0(rd) |  h2  |'hd6dadd1c|
+|wr_rd | addr  |  data    |
+|------|-------|----------|
+|1(wr) |  `hf  |'hec826818| 
+|0(rd) |  `hf  |'hec826818|
+|1(wr) |  `h2  |'hd6dadd1c|
+|0(rd) |  `h2  |'hd6dadd1c|
 
 
 ### MEM_PARALLEL_WR_RD
