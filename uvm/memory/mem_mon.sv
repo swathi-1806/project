@@ -32,14 +32,7 @@ tx = mem_tx::type_id::create("tx");
 			if(tx.wr_rd == 1) tx.wdata = vif.mon_cb.wdata;
 			if(tx.wr_rd == 0) tx.rdata = vif.mon_cb.rdata;
          
-			//print
-			`uvm_info("mem_mon",
-				$sformatf("CMD = %s||ADDR=%h||DATA=%h",
-								tx.wr_rd ? "WR":"RD",
-								tx.addr,
-								tx.wr_rd ? tx.wdata : tx.rdata),
-				UVM_NONE)
-		
+					
 		//send the tx to cov and sbd
 		mon_ap_h.write(tx);
 		end
@@ -49,4 +42,3 @@ endtask
 endclass
 
  
-	
