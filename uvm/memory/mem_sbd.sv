@@ -65,5 +65,3 @@ endfunction
 
 endclass
 
-
-
