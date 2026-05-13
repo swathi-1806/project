@@ -1,60 +1,123 @@
-# waveform
-## one_wr_one_rd
+# UVM Verification of Memory
+This project demonstrates UVM-based verification of a simple memory DUT.
+The goal of this project is to verify that data written into memory is correctly read back using reusable UVM sequences and proper address tracking.
 
-<img width="1820" height="262" alt="image" src="https://github.com/user-attachments/assets/710df615-0c19-4280-9b69-52fd82c70c6b" />
+## Verification Goal
+
+When performing read operations, the data must be fetched from the same address where write operations were previously done.
+
+To achieve this:
+* Write addresses are stored
+* Read operations use the same stored addresses
+* Reusable sequences are created for write and read
+* Multiple test scenarios are verified
 
 
+## Reusable Sequences
 
+Instead of writing separate sequences for each test, reusable sequences are created:
 
+* mem_wr_seq-->	Performs N write operations
+* mem_rd_seq-->	Performs N read operations from stored addresses
 
-## Step 1 — Reset phase
+These sequences are controlled using:
+* wr_count
+* rd_count
 
-### At beginning:
+## Address Tracking Mechanism (Mailbox)
 
-* rst = 1
-* ready = 0
-* rdata = 0
-* Memory is cleared (from your RTL)
-Nothing happens here. Correct.
+To make sure read happens from the same location as write:
 
-## Step 2 — First VALID transaction (WRITE)
+* During WRITE → address is stored into a mailbox
+* During READ → address is taken from the same mailbox
 
-* valid = 1
-* wr_rd = 1 → WRITE
-* addr = 0x4 (100 in binary shown)
-* wdata = 0x00000007 (shown as 111)
+This ensures correct data comparison and functional verification
 
-### Same cycle:
-DUT sets ready = 1
-From your RTL:
+## Implemented Test Cases
+### MEM_1WR_1RD
+* Perform 1 write
+* Perform 1 read from same address
 
-if(valid) begin
-  ready = 1;
-  if(wr_rd) mem[addr] = wdata;
-
-So memory now contains:
-mem[4] = 7
-
-Then driver drops:
-
-* valid = 0
+<img width="1834" height="242" alt="image" src="https://github.com/user-attachments/assets/2227970f-1e56-4252-8fd5-eccf29aa1a2e" />
+### write
+* wr_rd = 1
+* addr  = 'hf
+* wdata = 'hec826818
+### read
 * wr_rd = 0
-* wdata = 0
+* addr  = 'hf
+* rdata = 'hec826818
 
-## Step 3 — Next VALID transaction (READ)
+### MEM_5WR_5RD
+* Perform 5 writes
+* Perform 5 reads from same addresses in same order
+<img width="1835" height="244" alt="image" src="https://github.com/user-attachments/assets/920043de-c669-4e2a-a1a6-41e31a7448a5" />
+### write
+wr_rd | addr | wdata    |
+------------------------
+1     |  hf  |'hec826818|  
+1     |  h2  |'hd6dadd1c|
+1     |  hd  |'hb4db4bfa|
+1     |  h5  |'h2a517247|
+1     |  h6  |'h259ef30e|
 
-* valid = 1
-* wr_rd = 0 → READ
-* addr = same 4
+### read
+wr_rd | addr | rdata    |
+-------------------------
+0     |  hf  |'hec826818|  
+0     |  h2  |'hd6dadd1c|
+0     |  hd  |'hb4db4bfa|
+0     |  h5  |'h2a517247|
+0     |  h6  |'h259ef30e|
 
-DUT executes:
-else rdata = mem[addr];
-So:
-rdata = mem[4] = 7
-And you see on waveform:
-rdata = 111
-Exactly what was written earlier.
+### MEM_1WR_1RD_1WR_1RD
 
-## mem_full_wr_full_rd
-<img width="1816" height="257" alt="Screenshot 2026-05-10 211107" src="https://github.com/user-attachments/assets/e4576fa7-860c-4a9c-8cc3-c5187fbf7969" />
+Sequence:
+* Write → Read → Write → Read
+This verifies mailbox reuse across multiple sequence calls.
+<img width="1836" height="251" alt="image" src="https://github.com/user-attachments/assets/9b954dec-31d5-49d3-9b72-c447b835d767" />
+* wr-->addr=hf || wdata = 'hec826818
+* rd-->addr=hf || rdata = 'hec826818
+* wr-->addr=h2 || wdata = 'hd6dadd1c 
+* rd-->addr=h2 || rdata = 'hd6dadd1c  
+ 
+
+### MEM_PARALLEL_WR_RD
+* Write and Read sequences run in parallel using fork...join
+* Verifies synchronization and address sharing
+
+## Project Structure
+```
+mem_seq_lib.sv       → write/read sequences
+mem_test_lib.sv      → test cases
+mem_env.sv           → environment
+mem_agent.sv         → agent
+mem_drv.sv           → driver
+mem_mon.sv           → monitor
+mem_tx.sv            → transaction
+```
+
+## Tools & Technologies Used
+Category	 | Tool / Language	                        |Purpose                                    |
+---------------------------------------------------------------------------------------------------
+Language	 |SystemVerilog	                            |RTL + UVM Testbench development            |
+Methodology|	UVM (Universal Verification Methodology)|	Structured verification environment       |
+Simulator	 |EDA Playground	                          |Compile, run, and debug simulations online |
+Editor	   |GVim	                                    |Writing and editing SV/UVM code            |
+
+## Key Learnings From This Project
+* Reusable sequences using wr_count and rd_count
+* Mailbox usage for inter-sequence communication
+* Proper UVM driver timing with handshake signals
+* Running sequences sequentially and in parallel
+* Debugging waveform vs log mismatch
+* Understanding why read was not visible in waveform
+
+
+
+
+
+
+
+
 
