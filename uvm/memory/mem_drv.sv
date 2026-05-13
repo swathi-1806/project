@@ -34,22 +34,24 @@ task drive_tx(mem_tx tx);
 	if(tx.wr_rd==1)
 			vif.drv_cb.wdata <=tx.wdata;
 	vif.drv_cb.valid <= 1;
-	wait(vif.drv_cb.ready ==1);
+  
+	//Handshake: wait clock-by-clock until ready is seen
+  do begin
+    @vif.drv_cb;
+  end while (vif.drv_cb.ready != 1);
+
 	if(tx.wr_rd==0)
 			tx.rdata = vif.drv_cb.rdata;
-	//print
-	`uvm_info("mem_drv",
-				$sformatf("CMD = %s||ADDR=%h||DATA=%h",
-								tx.wr_rd ? "WR":"RD",
-								tx.addr,
-								tx.wr_rd ? tx.wdata : tx.rdata),
-				UVM_LOW)
+  
+	// Deassert after handshake
+ 	 @vif.drv_cb;
 	vif.drv_cb.valid <=0;			
 	vif.drv_cb.wr_rd <=0;
 	vif.drv_cb.addr  <=0;
-	vif.drv_cb.wdata <=0;
+	//vif.drv_cb.wdata <=0;
 
 
 endtask
 endclass
+
 
