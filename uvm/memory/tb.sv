@@ -12,7 +12,6 @@ import uvm_pkg::*;
 
 `include "mem_tx.sv"
 `include "mem_base_seq.sv"
-`include "mem_one_wr_one_rd_seq.sv"
 
 `include "mem_mon.sv"
 `include "mem_drv.sv"
@@ -25,7 +24,6 @@ import uvm_pkg::*;
 `include "mem_env.sv"
 
 `include "mem_test_lib.sv"
-`include "mem_one_wr_one_rd_test.sv"
 
 
 //1. clk and rst declaration
@@ -82,9 +80,9 @@ initial begin
 end
 
 
-//call the run_test
+//call the run_tes
 initial begin
-  run_test("mem_one_wr_one_rd_test");//UVM_TB EXECUTION STARTS
+  run_test("mem_1wr_1rd_test");//UVM_TB EXECUTION STARTS
 end
 
 //waveform
@@ -94,9 +92,4 @@ initial begin
 end
 
 endmodule
-
-
-
-
-
 
