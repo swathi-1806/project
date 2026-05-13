@@ -12,6 +12,10 @@ function new(string name="");\
 	super.new(name);\
 endfunction
 
+mailbox #(bit [`ADDR_WIDTH-1:0]) addr_mb = new();
+
+
+
 
 
 
