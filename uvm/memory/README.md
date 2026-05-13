@@ -39,6 +39,7 @@ This ensures correct data comparison and functional verification
 * Perform 1 read from same address
 
 <img width="1834" height="242" alt="image" src="https://github.com/user-attachments/assets/2227970f-1e56-4252-8fd5-eccf29aa1a2e" />
+
 ### write
 * wr_rd = 1
 * addr  = 'hf
@@ -51,24 +52,26 @@ This ensures correct data comparison and functional verification
 ### MEM_5WR_5RD
 * Perform 5 writes
 * Perform 5 reads from same addresses in same order
+  
 <img width="1835" height="244" alt="image" src="https://github.com/user-attachments/assets/920043de-c669-4e2a-a1a6-41e31a7448a5" />
+
 ### write
-wr_rd | addr | wdata    |
-------------------------
-1     |  hf  |'hec826818|  
-1     |  h2  |'hd6dadd1c|
-1     |  hd  |'hb4db4bfa|
-1     |  h5  |'h2a517247|
-1     |  h6  |'h259ef30e|
+|wr_rd | addr | wdata    |
+|------|------|----------|
+|1     |  hf  |'hec826818|  
+|1     |  h2  |'hd6dadd1c|
+|1     |  hd  |'hb4db4bfa|
+|1     |  h5  |'h2a517247|
+|1     |  h6  |'h259ef30e|
 
 ### read
-wr_rd | addr | rdata    |
--------------------------
-0     |  hf  |'hec826818|  
-0     |  h2  |'hd6dadd1c|
-0     |  hd  |'hb4db4bfa|
-0     |  h5  |'h2a517247|
-0     |  h6  |'h259ef30e|
+|wr_rd | addr | rdata    |
+|------|------|----------|
+|0     |  hf  |'hec826818|  
+|0     |  h2  |'hd6dadd1c|
+|0     |  hd  |'hb4db4bfa|
+|0     |  h5  |'h2a517247|
+|0     |  h6  |'h259ef30e|
 
 ### MEM_1WR_1RD_1WR_1RD
 
@@ -76,6 +79,7 @@ Sequence:
 * Write → Read → Write → Read
 This verifies mailbox reuse across multiple sequence calls.
 <img width="1836" height="251" alt="image" src="https://github.com/user-attachments/assets/9b954dec-31d5-49d3-9b72-c447b835d767" />
+
 * wr-->addr=hf || wdata = 'hec826818
 * rd-->addr=hf || rdata = 'hec826818
 * wr-->addr=h2 || wdata = 'hd6dadd1c 
@@ -85,6 +89,8 @@ This verifies mailbox reuse across multiple sequence calls.
 ### MEM_PARALLEL_WR_RD
 * Write and Read sequences run in parallel using fork...join
 * Verifies synchronization and address sharing
+<img width="1831" height="245" alt="image" src="https://github.com/user-attachments/assets/15ed2933-7f60-46ce-95dc-92fc6387d552" />
+
 
 ## Project Structure
 ```
