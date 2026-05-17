@@ -70,8 +70,6 @@ task run();
 				common::gen2bfm.put(tx);
 			end
 		end	
-
-
 	endcase
 endtask
 endclass
