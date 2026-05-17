@@ -5,6 +5,7 @@ interface mem_interface(input reg clk,rst);
 	bit [`WIDTH-1:0]rdata;
 	bit valid,ready;
 
+	
 	 clocking bfm_cb @(posedge clk);
 	 	default input #0 output #1;
 		input ready,rdata;//bfm inputs
