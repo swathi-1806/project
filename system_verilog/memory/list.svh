@@ -1,0 +1,15 @@
+`include "common.sv"
+`include "memory.v"
+`include "transaction.sv"
+`include "generator.sv"
+`include "interface.sv"
+`include "bfm.sv"
+`include "monitor.sv"
+`include "coverage.sv"
+`include "agent.sv"
+`include "scoreboard.sv"
+`include "env.sv"
+`include "mem_assert.sv"
+`include "tb.sv"
+
+
