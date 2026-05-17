@@ -4,14 +4,14 @@ reg clk,rst;
 
 	mem_interface pif(clk,rst);
 
-	memory dut(.clk(pif.clk),
-				.rst(pif.rst),
-				.wr_rd(pif.wr_rd),
-				.addr(pif.addr),
-				.wdata(pif.wdata),
-				.rdata(pif.rdata),
-				.valid(pif.valid),
-				.ready(pif.ready));
+	memory dut(    	.clk(pif.clk),
+					.rst(pif.rst),
+					.wr_rd(pif.wr_rd),
+					.addr(pif.addr),
+					.wdata(pif.wdata),
+					.rdata(pif.rdata),
+					.valid(pif.valid),
+				    .ready(pif.ready));
 				 
 	mem_assert uut( .clk(pif.clk),
 					.rst(pif.rst),
@@ -52,8 +52,6 @@ reg clk,rst;
 				$display("test_failed");
 				$display("matchings=%0d,mismatchings=%0d",common::matchings,common::mismatchings);
 			end
-				
-
 			$finish;
 		end
 endmodule
