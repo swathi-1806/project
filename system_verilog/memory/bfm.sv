@@ -33,6 +33,7 @@ class mem_bfm;
 		vif.bfm_cb.valid	<=0;
 	endtask
 endclass
+
 /*
 		
 		@(posedge clk);
