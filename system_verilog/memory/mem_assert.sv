@@ -1,3 +1,4 @@
+//assertions
 module mem_assert(clk,rst,wr_rd,addr,wdata,rdata,valid,ready);
 input clk,rst,wr_rd,valid,ready;
 input ['ADDR_WIDTH-1:0]addr;
