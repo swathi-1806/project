@@ -2,9 +2,8 @@
 # 4-bit ALU Verification using UVM
 <img width="1846" height="182" alt="Screenshot 2026-05-20 232102" src="https://github.com/user-attachments/assets/a7371aaf-edc0-4f27-8277-38196999bcba" />
 
+
 <img width="1836" height="562" alt="Screenshot 2026-05-20 232027" src="https://github.com/user-attachments/assets/dd1ceb90-1dd4-4518-a05d-a65bb6fed617" />
-
-
 
 ## Overview
 This project verifies a 4-bit ALU design using the UVM (Universal Verification Methodology) framework in SystemVerilog.
