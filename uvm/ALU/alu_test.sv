@@ -15,6 +15,10 @@ class alu_test extends uvm_test;
         env_h = alu_env::type_id::create("env_h", this);
     endfunction
 
+	function void end_of_elaboration_phase(uvm_phase phase);
+		uvm_top.print_topology();
+	endfunction
+
     task run_phase(uvm_phase phase);
 
         alu_seq seq_h;
