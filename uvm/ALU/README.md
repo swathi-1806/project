@@ -20,7 +20,9 @@ A complete UVM testbench environment is implemented including:
 - Sequencer
 - Driver
 - Monitor
+- coverage
 - Agent
+- scoreboard
 - Environment
 - Scoreboard
 - Test
@@ -61,10 +63,12 @@ A complete UVM testbench environment is implemented including:
 .
 ├── alu_4bit.sv
 ├── alu_interface.sv
+├── alu_assert.sv
 ├── alu_tx.sv
 ├── alu_seq.sv
 ├── alu_drv.sv
 ├── alu_mon.sv
+├── alu_coverage.sv
 ├── alu_sbd.sv
 ├── alu_agent.sv
 ├── alu_env.sv
@@ -103,6 +107,9 @@ Receives transactions from sequencer and drives DUT signals through the virtual 
 
 ## Monitor
 Samples DUT activity and sends transactions to the scoreboard.
+
+## coverage
+Functional coverage is used to measure whether all operations and input combinations are exercised
 
 ## Scoreboard
 Implements a golden reference model and compares expected output with DUT output.
