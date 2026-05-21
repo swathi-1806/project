@@ -1,4 +1,5 @@
-//https://www.edaplayground.com/x/FYh7
+//https://www.edaplayground.com/x/r9k_
+
 //`include "uvm_pkg.sv"
 import uvm_pkg::*;
 `include "uvm_macros.svh"
@@ -8,6 +9,7 @@ import uvm_pkg::*;
 `include "alu.v"
 
 `include "alu_interface.sv"
+`include "alu_assert.sv"
 
 `include "alu_tx.sv"
 `include "alu_seq.sv"
@@ -15,7 +17,7 @@ import uvm_pkg::*;
 `include "alu_mon.sv"
 `include "alu_drv.sv"
 `include "alu_sqr.sv"
-//`include "alu_cov.sv"
+`include "alu_cov.sv"
 
 `include "alu_agent.sv"
 `include "alu_sbd.sv"
@@ -37,6 +39,13 @@ alu_4bit dut (.a(vif.a),
 			  .b(vif.b),
    			  .opcode(vif.opcode),
               .result(vif.result));
+
+//assertion 
+alu_assert asrt (.clk    (clk),
+    			 .a      (vif.a),
+    			 .b      (vif.b),
+    			 .opcode (vif.opcode),
+    			 .result (vif.result));
 
 //run_test
 initial begin

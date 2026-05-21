@@ -21,8 +21,9 @@ class alu_env extends uvm_env;
     function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);
 
-        // Monitor → Scoreboard connection
+        // Monitor -> Scoreboard connection
       agt_h.mon_h.mon_ap_h.connect(sbd_h.sbd_imp_h);
+	  
     endfunction
 
 endclass
