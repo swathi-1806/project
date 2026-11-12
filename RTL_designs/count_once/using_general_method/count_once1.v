@@ -1,4 +1,4 @@
-
+//https://www.edaplayground.com/x/hQQA
 module once_count #(
   parameter DATA_WIDTH = 10,
   parameter COUNT_WIDTH = $clog2(DATA_WIDTH+1))
