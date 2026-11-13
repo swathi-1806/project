@@ -174,3 +174,7 @@ FA4 produces:
 
 - s4 → Weight 2
 - c4 → Weight 4
+  
+## waveform
+<img width="1138" height="297" alt="image" src="https://github.com/user-attachments/assets/60f2db10-3541-4ec8-9b57-f80843590829" />
+
