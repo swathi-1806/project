@@ -163,7 +163,33 @@ Through this project, I practiced:
 - Implementing manual functional coverage counters.
 - Analyzing simulation results.
 
-## 10. Future Enhancements
+## 10.output
+- D=0000 Y=000 EXPECTED=000 PASS
+- D=0001 Y=100 EXPECTED=100 PASS
+--D=0010 Y=011 EXPECTED=011 PASS
+- D=0011 Y=011 EXPECTED=011 PASS
+- D=0100 Y=010 EXPECTED=010 PASS
+- D=0101 Y=010 EXPECTED=010 PASS
+- D=0110 Y=010 EXPECTED=010 PASS
+- D=0111 Y=010 EXPECTED=010 PASS
+- D=1000 Y=001 EXPECTED=001 PASS
+- D=1001 Y=001 EXPECTED=001 PASS
+- D=1010 Y=001 EXPECTED=001 PASS
+- D=1011 Y=001 EXPECTED=001 PASS
+- D=1100 Y=001 EXPECTED=001 PASS
+- D=1101 Y=001 EXPECTED=001 PASS
+- D=1110 Y=001 EXPECTED=001 PASS
+- D=1111 Y=001 EXPECTED=001 PASS
+- --------------------------------------
+- VERIFICATION SUMMARY
+- --------------------------------------
+- PASS COUNT     = 16
+- FAIL COUNT     = 0
+- INPUT COVERAGE = 16 / 16
+- OVERALL RESULT = PASS
+- --------------------------------------
+
+## 11. Future Enhancements
 
 - Add constrained or directed-random stimulus.
 - Add SystemVerilog assertions.
