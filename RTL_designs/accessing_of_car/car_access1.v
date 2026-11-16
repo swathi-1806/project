@@ -6,22 +6,22 @@ module car_access(d,y);
     
     if(d[3]==1) begin
       y=3'b001;//father gets an access
-      $display("father gets access");
+      //$display("father gets access");
     end
     
     else if(d[2]==1) begin
       y = 3'b010;       // Mother
-      $display("mother gets access");
+      //$display("mother gets access");
     end
       
     else if (d[1]==1)begin
         y = 3'b011;       // Daughter
-      	$display("daughter gets access");
+      	//$display("daughter gets access");
     end
      
     else if (d[0]==1)begin
         y = 3'b100;       // Son - Lowest priority
-      	$display("son gets access");
+      	//$display("son gets access");
     end
       
     else
@@ -37,3 +37,4 @@ end
 // 000 - Nobody
 
 endmodule
+

@@ -1,83 +1,112 @@
+`include "car_access1.v"
+
 module tb_car_access;
-reg [3:0]d;
-wire [2:0]y;
+
+reg [3:0] d;
+wire [2:0] y;
 
 integer i;
-reg [2:0]expected;
+reg [2:0] expected;
 integer pass_count;
 integer fail_count;
+integer coverage_count;
+
+// Coverage variable: 16 bits for 16 combinations
+reg [15:0] input_coverage;
 
 //============================================
-//Expected Output and Reference Model--->step-3
+// Step 3: Reference Model
 //============================================
-function [2:0]reference_model;
-	input [3:0]req;
-		begin
-			if(req[3]==1)
-				reference_model=3'b001;
+function [2:0] reference_model;
+    input [3:0] req;
 
-			else if (req[2])
-            	reference_model = 3'b010;
+    begin
+        if (req[3])
+            reference_model = 3'b001;
 
-       		 else if (req[1])
-            	reference_model = 3'b011;
+        else if (req[2])
+            reference_model = 3'b010;
 
-       		 else if (req[0])
-            	reference_model = 3'b100;
+        else if (req[1])
+            reference_model = 3'b011;
+
+        else if (req[0])
+            reference_model = 3'b100;
 
         else
             reference_model = 3'b000;
-  
-		end
+    end
 endfunction
 
+//============================================
+// DUT Instantiation
+//============================================
+car_access dut (
+    .d(d),
+    .y(y)
+);
 
-//step-1:-generate test inputs & give inputs to the DUT
-car_access dut(.d(d),.y(y));//---->step-1
-	initial begin
-      	pass_count=0;
-	fail_count=0;
+//============================================
+// Main Testbench
+//============================================
+initial begin
 
-	/*
-	-----------------------------
-	this will gener
-    ate randomly , there are chances it won't cover all the input combinations
-		repeat(10)begin
-			d=$random();
-			#10;
-			$display("input=%b output=%b",d,y);
-		end
-	*/
-	
+    pass_count = 0;
+    fail_count = 0;
+    coverage_count = 0;
+    input_coverage = 16'b0;
 
-		for (i = 0; i < 16; i = i + 1) begin//-->step-2
+    // Step 2: Apply all 16 input combinations
+    for (i = 0; i < 16; i = i + 1) begin
 
-    			d = i;
-    			#10;
-				expected = reference_model(d);//step-3(part2)
-          $display("D=%b Y=%b expected=%b", d, y,expected);
+        d = i;
+        #10;
 
-				if(y==expected)begin//step--4
-					$display("pass");
-					pass_count=pass_count+1;//step==5
-				end
-				else begin
-					$display("fail");
-					fail_count=fail_count+1;
-				end
+        // Step 3: Calculate expected output
+        expected = reference_model(d);
+
+        // Step 6: Mark input as tested
+        input_coverage[d] = 1'b1;
+
+        // Step 4 and 5: Compare and count
+        if (y === expected) begin
+            $display("D=%b Y=%b EXPECTED=%b PASS",d, y, expected);
+            pass_count = pass_count + 1;
+        end
+        else begin
+            $display("D=%b Y=%b EXPECTED=%b FAIL",d, y, expected);
+            fail_count = fail_count + 1;
         end
 
-		// Final summary
-    $display("------------------------");
+    end
+
+    // Calculate functional coverage
+    coverage_count = 0;
+
+    for (i = 0; i < 16; i = i + 1) begin
+        if (input_coverage[i] == 1'b1)
+            coverage_count = coverage_count + 1;
+    end
+
+    // Final verification summary
+    $display("--------------------------------------");
     $display("VERIFICATION SUMMARY");
-    $display("PASS COUNT = %0d", pass_count);
-    $display("FAIL COUNT = %0d", fail_count);
+    $display("--------------------------------------");
+
+    $display("PASS COUNT     = %0d", pass_count);
+    $display("FAIL COUNT     = %0d", fail_count);
+    $display("INPUT COVERAGE = %0d / 16", coverage_count);
 
     if (fail_count == 0)
-        $display("OVERALL RESULT: PASS");
+        $display("OVERALL RESULT = PASS");
     else
-        $display("OVERALL RESULT: FAIL");
+        $display("OVERALL RESULT = FAIL");
+
+    $display("--------------------------------------");
 
     $finish;
-	end
+
+end
+
 endmodule
+
